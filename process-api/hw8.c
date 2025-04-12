@@ -48,4 +48,12 @@ int main(int argc, char *argv[]) {
         printf("Child 2 receive: %s\n", buf);
         exit(0); 
     }
+
+    close(pipefd[0]);
+    close(pipefd[1]);
+    waitpid(pid1, NULL, 0);
+    waitpid(pid2, NULL, 0);
+    printf("Finished\n");
+
+    return 0;
 }
